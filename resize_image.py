@@ -7,7 +7,6 @@
 import json
 
 
-import torch
 import torchvision.transforms as transforms
 from PIL import Image
  
@@ -33,14 +32,14 @@ def get_image_paths(video_path):
 image_name_list = []
 for mode in ["dev","test","train"]:
     print("processing {} corpus".format(mode))
-    old_dev_corpus = open("./old_corpus/phoenix2014T.{}.sign".format(mode), "r").readlines()
+    old_dev_corpus = open("~/tongyao/generate-googLeNet-features/old_corpus/phoenix2014T.{}.sign".format(mode), "r").readlines()
     
     count = 0
     for folder_path in old_dev_corpus:
         count+=1
         if not count%(len(old_dev_corpus)//10):
             print("currently processed {} of {} ({}%)".format(count,len(old_dev_corpus),count*100//len(old_dev_corpus)))
-        real_path = (folder_path.replace("<PATH_TO_EXTRACTED_AND_RESIZED_FRAMES>", "./PHOENIX-2014-T-release-v3/PHOENIX-2014-T")).replace("227x227","210x260").replace("\n","")
+        real_path = (folder_path.replace("<PATH_TO_EXTRACTED_AND_RESIZED_FRAMES>", "./../PHOENIX-2014-T-release-v3/PHOENIX-2014-T")).replace("227x227","210x260").replace("\n","")
         image_name_list.extend(get_image_paths( real_path))
     print('after the current section, count is {}'.format(count))
 
