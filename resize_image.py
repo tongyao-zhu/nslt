@@ -14,6 +14,8 @@ from torch import nn
 import os
 
 
+CORPUS_PATH = "./../generate-googLeNet-features/old_corpus/"
+
 # In[3]:
 
 
@@ -32,7 +34,7 @@ def get_image_paths(video_path):
 image_name_list = []
 for mode in ["dev","test","train"]:
     print("processing {} corpus".format(mode))
-    old_dev_corpus = open("~/tongyao/generate-googLeNet-features/old_corpus/phoenix2014T.{}.sign".format(mode), "r").readlines()
+    old_dev_corpus = open(os.path.join(CORPUS_PATH, "phoenix2014T.{}.sign".format(mode)), "r").readlines()
     
     count = 0
     for folder_path in old_dev_corpus:
@@ -58,8 +60,4 @@ for image_name in image_name_list:
     new_image.save(image_name.replace("210x260","227x227"))
 
 
-# In[16]:
-
-
-new_image.show()
 
