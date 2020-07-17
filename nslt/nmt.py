@@ -23,7 +23,8 @@ import random
 import sys
 
 import numpy as np
-import tensorflow.compat.v1 as tf
+import tensorflow as tf
+
 import inference
 import train
 from utils import evaluation_utils
@@ -374,4 +375,4 @@ if __name__ == "__main__":
     nmt_parser = argparse.ArgumentParser()
     add_arguments(nmt_parser)
     FLAGS, unparsed = nmt_parser.parse_known_args()
-    tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
+    tf.compat.v1.run(main=main, argv=[sys.argv[0]] + unparsed)
