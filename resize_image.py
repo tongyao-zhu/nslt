@@ -12,10 +12,11 @@ from PIL import Image
  
 from torch import nn
 import os
+from multiprocessing import Pool
 
 
 CORPUS_PATH = "./../generate-googLeNet-features/old_corpus/"
-
+NUM_PROCESS = 12
 # In[3]:
 
 
@@ -48,8 +49,7 @@ for mode in ["dev","test","train"]:
 
 # In[ ]:
 
-
-for image_name in image_name_list:
+def resize_image(image_name):
     image = Image.open(image_name)
 
     new_image = image.resize((227, 227))
@@ -58,6 +58,12 @@ for image_name in image_name_list:
         os.makedirs(folder_name)
 
     new_image.save(image_name.replace("210x260","227x227"))
+
+pool = Pool(NUM_PROCESS)
+pool.map(resize_image, image_name_list)
+pool.close()
+pool.join()
+print("Finished process!")
 
 
 
