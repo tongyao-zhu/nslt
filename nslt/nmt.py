@@ -23,8 +23,7 @@ import random
 import sys
 
 import numpy as np
-import tensorflow as tf
-
+import tensorflow.compat.v1 as tf
 import inference
 import train
 from utils import evaluation_utils
