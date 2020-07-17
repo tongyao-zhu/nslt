@@ -172,7 +172,7 @@ class GNMTModel(attention_model.AttentionModel):
         return attention_model._create_attention_images_summary(self.final_context_state[0])
 
 
-class GNMTAttentionMultiCell(tf.nn.rnn_cell.MultiRNNCell):
+class GNMTAttentionMultiCell(tf.compat.v1.nn.rnn_cell.MultiRNNCell):
     """A MultiCell with GNMT attention style."""
 
     def __init__(self, attention_cell, cells, use_new_attention=False):
