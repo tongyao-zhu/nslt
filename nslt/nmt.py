@@ -375,4 +375,4 @@ if __name__ == "__main__":
     nmt_parser = argparse.ArgumentParser()
     add_arguments(nmt_parser)
     FLAGS, unparsed = nmt_parser.parse_known_args()
-    tf.compat.v1.app.run(main=main, argv=[sys.argv[0]] + unparsed)
+    tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
