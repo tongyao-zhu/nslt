@@ -336,8 +336,9 @@ def run_main(flags, default_hparams, train_fn, inference_fn, target_session=""):
 
     # Load hparams.
     hparams = create_or_load_hparams(out_dir, default_hparams, flags.hparams_path)
-
+    print("hparams are {}".format(hparams))
     if flags.inference_input_file:
+        print("Running inference here, the input inference file is {}".format(flags.inference_input_file))
         # Inference indices
         hparams.inference_indices = None
         if flags.inference_list:

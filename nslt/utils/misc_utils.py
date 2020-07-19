@@ -78,6 +78,7 @@ def load_hparams(model_dir):
     """Load hparams from an existing model directory."""
     hparams_file = os.path.join(model_dir, "hparams")
     if tf.gfile.Exists(hparams_file):
+        print_out("hparams exist!")
         print_out("# Loading hparams from %s" % hparams_file)
         with codecs.getreader("utf-8")(tf.gfile.GFile(hparams_file, "rb")) as f:
             try:
